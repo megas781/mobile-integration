@@ -3,7 +3,9 @@ package gghost.myapplication;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
     @SerializedName("userId")
     @Expose
     private int userId;

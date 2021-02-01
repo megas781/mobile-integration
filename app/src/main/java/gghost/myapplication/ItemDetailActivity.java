@@ -25,14 +25,14 @@ public class ItemDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -50,16 +50,28 @@ public class ItemDetailActivity extends AppCompatActivity {
         // http://developer.android.com/guide/components/fragments.html
         //
         if (savedInstanceState == null) {
+
+
+            System.out.println("чоооо?");
+//            System.out.println(getIntent().getSerializableExtra(ItemDetailFragment.ARG_ARRAY_ID));
+
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+            //ItemDetailActivity продвигает данные аргументы дальше в фрагмент
+//            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
+//                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+
+            //продвигаем от DetailActiviy дальше в Fragment
+            arguments.putSerializable(ItemDetailFragment.ARG_ARRAY_ID, getIntent().getSerializableExtra(ItemDetailFragment.ARG_ARRAY_ID));
+
             ItemDetailFragment fragment = new ItemDetailFragment();
             fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.item_detail_container, fragment)
                     .commit();
+        } else {
+            System.out.println("ELSE CASE!!!");
         }
     }
 

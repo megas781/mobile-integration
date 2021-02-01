@@ -1,5 +1,6 @@
 package gghost.myapplication;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -12,5 +13,5 @@ interface JSONPlaceHolderApi {
     public Call<Post> getPostWithID(@Path("id") int id);
 
     @GET("/posts")
-    public Call<List<Post>> getAllPosts();
+    public Call<ArrayList<Post>> getAllPosts();
 }
